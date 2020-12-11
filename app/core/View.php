@@ -16,9 +16,9 @@ class View{
 		extract($vars);
 		if(file_exists('app/views/'.$this->path.'.php')){
 			ob_start();
-			require 'app/views/'.$this->path.'.php';
+			include 'app/views/'.$this->path.'.php';
 			$content = ob_get_clean();
-			require 'app/views/layouts/'.$this->layout.'.php';
+			include 'app/views/layouts/'.$this->layout.'.php';
 		}
 	}
 
@@ -27,5 +27,19 @@ class View{
 		require 'app/views/errors/'.$code.'.php';
 		exit;
 	}
+
+	public function message($message) {
+		exit(json_encode(['message' => $message]));
+	}
+
+	public function location($url) {
+		exit(json_encode(['url' => $url]));
+	}
+
+	public function redirect($url) {
+		header('location: '.$url);
+		exit;
+	}
+
 }
 ?>

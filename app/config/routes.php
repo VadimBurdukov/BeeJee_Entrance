@@ -1,19 +1,43 @@
 <?
 return [
 
-	'' => [
+//Main routes
+
+		'' => [
+			'CONTROLLER' => 'main',
+			'ACTION' => 'index'
+		],
+
+	'{page:\d+}' => [
 		'CONTROLLER' => 'main',
-		'ACTION' => 'index'
+		'ACTION' => 'index',
+	],
+	
+	'add' => [
+		'CONTROLLER' => 'main',
+		'ACTION' => 'add'
 	],
 
-	'account/login' => [
-		'CONTROLLER' => 'account',
+	'login' => [
+		'CONTROLLER' => 'main',
 		'ACTION' => 'login'
 	],
+//Admin routes
 
-	'news/show' => [
-		'CONTROLLER' => 'news',
-		'ACTION' => 'show'
-	]
+	'admin/logout' => [
+		'CONTROLLER' => 'admin',
+		'ACTION' => 'logout'
+	],
+
+	'admin/edit/{id:\d+}' => [
+		'CONTROLLER' => 'admin',
+		'ACTION' => 'edit'
+	],
+
+	'admin/delete/{id:\d+}' => [
+		'CONTROLLER' => 'admin',
+		'ACTION' => 'delete',
+	],
+
 ];
 ?>

@@ -18,20 +18,30 @@ class Db{
 
 	public function query($query, $params = [])	{
 		$stmt = $this->db->prepare($query);
-		
-		if (!empty($params)){
+
+		if (!empty($params)){ 
 			foreach ($params as $key => $value) {
-				$stmt->bindValue(':'.$key, $value);
+				if(gettype($value)==='integer'){
+					$stmt->bindValue(':'.$key, $value, PDO::PARAM_INT);
+				} else {
+					
+					$stmt->bindValue(':'.$key, $value);
+				}
+				
 			}
 		}
-
 		$stmt->execute();
 		return $stmt;
 	}
 
-	public function getResult($query, $params = []){
-		$res = $this->query($query, $params);
-		return $res->FetchAll(PDO::FETCH_ASSOC);
+	public function parseQueryResult($query, $params = []){
+	 	$result = $this->query($query, $params);
+		return $result->fetchAll(PDO::FETCH_ASSOC);
 	}
+
+	public function column($query, $params = []) {
+		$result = $this->query($query, $params);
+		return $result->fetchColumn()[0];
+	}	
 }
 ?>
