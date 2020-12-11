@@ -58,7 +58,7 @@
 
 				<div class = "row">
 					<div class = "col-sm-3">
-						<label for="edited">Изменено админисратором:</label>
+						<label for="edited">Изменено администратором:</label>
 					</div>
 					<div class = "col-sm-9">
 						<input name="edited" type="checkbox" disabled <?if($task['edited']):?>checked <?endif;?>>
