@@ -42,16 +42,14 @@ class Main extends Model{
 			'name' => $name,
 			'pwd' => (int)$pwd,
 		];
-		//debug($params);
 		$result = $this->db->column('SELECT * 
 									 FROM admins 
 									 WHERE name = :name AND
 									       password = :pwd',
 									 $params
 									);
-		if ($result)
-			return true;
-		return false;
+		if ($result){
+			return true;		} else {			return false;		}
 	}
 }
 ?>

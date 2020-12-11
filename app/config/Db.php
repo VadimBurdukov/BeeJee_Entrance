@@ -1,8 +1,8 @@
 <?
 return [
 	'HOST' => 'localhost',
-	'DB' => 'to_do_list',
-	'USER' => 'mysql',
-	'PWD' => 'mysql'
+	'DB' => 'vadimburdukov',
+	'USER' => 'vadimburdukov',
+	'PWD' => 'Burdukov_beejee1'
 ]
 ?>

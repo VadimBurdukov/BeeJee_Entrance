@@ -35,8 +35,8 @@ class MainController extends Controller{
 	}
 
 	public function loginAction(){
-		if (!empty($_POST))	{
-
+		if (!empty($_POST))	{						$erFlag = false;			$errors = null;
+			if(empty($_POST['login'])){				$errors.="Поле Логин не может быть пустым";				$erFlag = true;			}			if(empty($_POST['pwd'])){				$errors.="Поле Пароль не может быть пустым";				$erFlag = true;			}						if($erFlag)				$this->view->message($errors);			
 			$_POST['login'] = htmlspecialchars($_POST['login']);
 			$_POST['pwd'] = htmlspecialchars($_POST['pwd']);
 

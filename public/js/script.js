@@ -3,7 +3,6 @@ $(document).ready(function() {
 		var json;
 		var errorBlock = $('.error-block');
 		var errorText = $('.error-text');
-		console.log(errorBlock);
 		var url = $(this).attr('action');
 		event.preventDefault();
 		$.ajax({	

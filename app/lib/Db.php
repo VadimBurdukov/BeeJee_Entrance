@@ -18,7 +18,6 @@ class Db{
 
 	public function query($query, $params = [])	{
 		$stmt = $this->db->prepare($query);
-
 		if (!empty($params)){ 
 			foreach ($params as $key => $value) {
 				if(gettype($value)==='integer'){
@@ -41,7 +40,12 @@ class Db{
 
 	public function column($query, $params = []) {
 		$result = $this->query($query, $params);
-		return $result->fetchColumn()[0];
+		if ($resultRow = $result->fetchColumn()){
+			return $resultRow[0];
+		} else {
+			return false;
+		}
+		
 	}	
 }
 ?>
